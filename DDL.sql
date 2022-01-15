@@ -1,3 +1,11 @@
+-- 현재 AutoCommit 여부를 확인합니다.
+SELECT @@AUTOCOMMIT;
+
+-- AutoCommit 반드시 해제해야 합니다.
+SET AUTOCOMMIT = 0;
+
+commit;
+
 /*그룹코드 table*/
 create table image_shop.code_group(
 	group_code varchar(3) not null,
@@ -44,5 +52,29 @@ create table image_shop.member_auth(
     primary key(user_auth_no)
 )
 engine=InnoDB;
+
+/* 회원 게시판 table*/
+create table image_shop.board(
+	board_no bigint not null auto_increment,
+    content longtext,
+    reg_date datetime, 
+    title varchar(200) not null,
+    upd_date datetime,
+    writer varchar(50) not null,
+    primary key(board_no)
+)
+engine=InnoDB;
+
+/* 공지사항 게시판 table*/
+create table image_shop.notice(
+	notice_no bigint not null auto_increment,
+    content longtext,
+    reg_date datetime,
+    title varchar(200) not null,
+    upd_date datetime,
+    primary key(notice_no)
+)
+engine=InnoDB;
+
 
 commit;
