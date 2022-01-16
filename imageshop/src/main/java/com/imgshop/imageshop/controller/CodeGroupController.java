@@ -1,8 +1,11 @@
 package com.imgshop.imageshop.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +36,20 @@ public class CodeGroupController {
 			return new ResponseEntity<>(codeGroup, HttpStatus.BAD_REQUEST);
 		}
 		
-
 	}
+	
+	@GetMapping
+	public ResponseEntity<List<CodeGroup>>list() throws Exception {
+		
+		List<CodeGroup> codeGroupList = service.selectCodeGroupList();
+		
+		if (codeGroupList.isEmpty()) {
+			return new ResponseEntity<>(null, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(codeGroupList, HttpStatus.OK);
+		}
+		
+	}
+	
+	
 }

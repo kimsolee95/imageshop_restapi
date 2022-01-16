@@ -1,5 +1,7 @@
 package com.imgshop.imageshop.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +13,5 @@ public interface CodeGroupMapper {
 	
 	public int codeGroupregister(CodeGroup codeGroup);
 
+	public List<CodeGroup> selectCodeGroupList();
 }
