@@ -1,5 +1,7 @@
 package com.imgshop.imageshop.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.imgshop.imageshop.domain.CodeGroup;
@@ -18,6 +20,13 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		
 		int result = codeGroupMapper.codeGroupregister(codeGroup);
 		return result;
+	}
+	
+	@Override
+	public List<CodeGroup> selectCodeGroupList() throws Exception {
+		
+		List<CodeGroup> selectCodeGroupList = codeGroupMapper.selectCodeGroupList();
+		return selectCodeGroupList;
 	}
 
 	
