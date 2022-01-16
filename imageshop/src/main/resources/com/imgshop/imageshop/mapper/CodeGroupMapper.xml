@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.imgshop.imageshop.mapper.CodeGroupMapper">
+    <insert id="codeGroupregister" parameterType="com.imgshop.imageshop.domain.CodeGroup">
+   		/* CodeGroupMapper.xml.codeGroupregister */ 	
+		INSERT INTO IMAGE_SHOP.CODE_GROUP 
+		(
+			GROUP_CODE
+			, GROUP_NAME
+			, REG_DATE
+			, UPD_DATE
+			, USE_YN
+		) VALUES 
+		(
+			#{groupCode}
+			, #{groupName}
+			, #{regDate}
+			, #{updDate}
+			, #{useYn}	
+		)
+    </insert>
+</mapper>
