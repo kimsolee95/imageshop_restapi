@@ -14,4 +14,8 @@ public interface CodeGroupMapper {
 	public int codeGroupregister(CodeGroup codeGroup);
 
 	public List<CodeGroup> selectCodeGroupList();
+	
+	public CodeGroup selectCodeGroupOne(String groupCode);
+
+	public int deleteCodeGroupOne(String groupCode);
 }

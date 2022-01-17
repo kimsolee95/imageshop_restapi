@@ -76,5 +76,108 @@ create table image_shop.notice(
 )
 engine=InnoDB;
 
+/* 상품 table */
+create table item (
+	item_id bigint not null auto_increment,
+    description varchar(250),
+    item_name varchar(50) not null,
+    picture_url varchar(200),
+    preview_url varchar(200),
+    price integer,
+    reg_date datetime, 
+    upd_date datetime,
+    primary key(item_id)
+)
+engine=InnoDB;
+
+/* 사용자 상품 테이블 */
+create table user_item (
+	user_item_no bigint not null auto_increment,
+    item_id bigint, 
+    reg_date datetime,
+    upd_date datetime,
+    user_no bigint,
+    primary key(user_item_no)
+)
+engine=InnoDB;
+
+/* 자료실 table */
+create table pds(
+	item_id bigint not null auto_increment,
+    description varchar(255),
+    item_name varchar(255),
+    reg_date datetime,
+    upd_date datetime,
+    view_cnt integer,
+    primary key(item_id)
+)
+engine=InnoDB;
+
+/* 자료실 첨부파일 table */
+create table pds_file (
+	pds_file_id bigint not null auto_increment,
+    down_cnt integer,
+    full_name varchar(200),
+    reg_date datetime,
+    upd_date datetime,
+    item_id bigint,
+    primary key(pds_file_id)
+)
+engine=InnoDB;
+
+alter table pds_file 
+add constraint FKfksyos2ceo6mik0iv3ue602yq 
+foreign key(item_id) references pds(item_id);
+
+/* 충전내역 table */
+create table charge_coin_history(
+	history_no bigint not null auto_increment,
+    amount integer not null,
+	reg_date datetime,
+    upd_date datetime,
+    user_no bigint,
+    primary key(history_no)
+)
+engine=InnoDB;
+
+/* 지급내역 table */
+create table pay_coin_history (
+	history_no bigint not null auto_increment,
+    amount integer not null,
+    item_id bigint,
+    item_name varchar(255),
+    reg_date datetime,
+    upd_date datetime,
+    user_no bigint,
+    primary key(history_no)
+)
+engine=InnoDB;
+
+/* 접근 log table */
+create table access_log(
+	log_no bigint not null auto_increment,
+    class_name varchar(100) not null,
+    class_simple_name varchar(50) not null,
+    method_name varchar(100) not null,
+    reg_date datetime,
+    remote_addr varchar(50) not null,
+    request_uri varchar(200) not null,
+    upd_date datetime,
+    primary key(log_no)
+)
+engine=InnoDB;
+
+/* 서비스 성능 log table */
+create table performance_log(
+	log_no bigint not null auto_increment,
+    duration_time bigint,
+    reg_date datetime,
+    signature_name varchar(50) not null,
+    signature_type_name varchar(100) not null,
+    upd_date datetime,
+    primary key(log_no)
+)
+engine=InnoDB;
 
 commit;
+
