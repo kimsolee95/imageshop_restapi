@@ -29,5 +29,16 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		return selectCodeGroupList;
 	}
 
+	@Override
+	public CodeGroup selectCodeGroupOne(String groupCode) throws Exception {
+		CodeGroup selectCodeGroupOne = codeGroupMapper.selectCodeGroupOne(groupCode);
+		return selectCodeGroupOne;
+	}
+	
+	@Override
+	public int deleteCodeGroupOne(String groupCode) throws Exception {
+		int result = codeGroupMapper.deleteCodeGroupOne(groupCode);	
+		return result;
+	}
 	
 }

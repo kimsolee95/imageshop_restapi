@@ -34,4 +34,23 @@
 			, USE_YN
 		FROM IMAGE_SHOP.CODE_GROUP		
 	</select>
+
+	<select id="selectCodeGroupOne" parameterType="String" resultType="com.imgshop.imageshop.domain.CodeGroup">
+		/* CodeGroupMapper.xml.selectCodeGroupOne */ 
+		SELECT
+			GROUP_CODE
+			, GROUP_NAME
+			, REG_DATE
+			, UPD_DATE
+			, USE_YN
+		FROM IMAGE_SHOP.CODE_GROUP
+		WHERE GROUP_CODE = #{groupCode}	
+	</select>
+
+	<delete id="deleteCodeGroupOne" parameterType="String">
+		/* CodeGroupMapper.xml.deleteCodeGroupOne */	
+		DELETE FROM IMAGE_SHOP.CODE_GROUP
+		WHERE GROUP_CODE = #{groupCode}
+	</delete>
+
 </mapper>
