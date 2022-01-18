@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.imgshop.imageshop.mapper.CodeDetailMapper">
+
+	<select id="codeDetailSelectOne" parameterType="com.imgshop.imageshop.domain.CodeDetailId" resultType="com.imgshop.imageshop.domain.CodeDetail">
+		SELECT 
+			cd.GROUP_CODE
+			, cd.CODE_VALUE
+			, cd.CODE_NAME
+			, cd.SORT_SEQ
+			, cd.USE_YN
+			, cd.REG_DATE
+			, cd.UPD_DATE
+		FROM image_shop.CODE_GROUP cg
+		INNER JOIN IMAGE_SHOP.CODE_DETAIL cd
+		ON cg.GROUP_CODE = cd.GROUP_CODE
+		and cd.CODE_VALUE = #{codeValue}
+		and cd.GROUP_CODE = #{groupCode}
+	</select>
+
+</mapper>
